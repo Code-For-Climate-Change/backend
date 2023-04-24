@@ -18,12 +18,12 @@ public class Tema {
     private Long id;
 
     @NotBlank(message = "A descrição é obrigatória")
-    @Size(max = 1000, message = "A descrição deve ter no minimo 10 e no máximo 1000 caracteres")
+    @Size(max = 1000, message = "A descrição deve ter no máximo 1000 caracteres")
     private String descricao;
 
 
-    @NotBlank(message = "O tema é obrigatória")
-    @Size(min = 5, max = 100, message = "A descrição deve ter no minimo 10 e no máximo 1000 caracteres")
+    @NotBlank(message = "O tema é obrigatório")
+    @Size(max = 100, message = "O tema deve ter no máximo 1000 caracteres")
     private String tema;
 
 
