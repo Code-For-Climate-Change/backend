@@ -25,7 +25,7 @@ import com.projeto.codecc.repository.TemaRepository;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/postagem")
+@RequestMapping("/postagens")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class PostagemController {
 	
