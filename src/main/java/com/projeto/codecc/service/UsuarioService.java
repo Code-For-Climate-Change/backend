@@ -29,12 +29,17 @@ public class UsuarioService {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+    
+    String fotoPadrao = "https://i.imgur.com/Tk9f10K.png";
 
     public Optional<Usuario> cadastrarUsuario(Usuario usuario) {
 
 		if (usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent())
 			return Optional.empty();
 
+		if (usuario.getFoto().isEmpty())
+			usuario.setFoto(fotoPadrao);
+	
 		if (checarIdade(usuario.getDataNascimento()) < 18)
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário menor de idade!", null);
 		
@@ -49,6 +54,9 @@ public class UsuarioService {
 
 			Optional<Usuario> buscaUsuario = usuarioRepository.findByUsuario(usuario.getUsuario());
 
+			if (usuario.getFoto().isEmpty())
+				usuario.setFoto(fotoPadrao);
+		
 			if ((buscaUsuario.isPresent()) && (buscaUsuario.get().getId() != usuario.getId()))
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
 
